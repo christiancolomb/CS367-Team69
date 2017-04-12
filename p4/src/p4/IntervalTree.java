@@ -117,7 +117,7 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 *             if the interval does not exist.
 	 */
 	public void delete(IntervalADT<T> interval) throws IntervalNotFoundException, IllegalArgumentException {
-		// TODO
+		root = deleteHelper(root, interval);
 	}
 
 	@Override
@@ -201,7 +201,24 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 */
 	public IntervalNode<T> deleteHelper(IntervalNode<T> node, IntervalADT<T> interval)
 			throws IntervalNotFoundException, IllegalArgumentException {
-		// TODO 
+		if (interval == null)
+			throw new IllegalArgumentException();
+		if (node.getInterval().getStart() == interval.getStart()) {
+			if (node.getInterval().getEnd() == interval.getEnd())
+				if (node.getRightNode() != null) {
+					node.setInterval(node.getSuccessor().getInterval());
+					deleteHelper(node.getSuccessor(), interval);
+					node.setMaxEnd(recalculateMaxEnd(node));
+					return node;
+				} else if (node.getLeftNode() != null)
+					return node.getLeftNode();	
+				else return null;
+		} else if (interval.compareTo(node.getInterval()) < 0)
+			node.setLeftNode(deleteHelper(node.getLeftNode(), interval));
+		else
+			node.setRightNode(deleteHelper(node.getRightNode(), interval));
+		node.setMaxEnd(recalculateMaxEnd(node));
+		return node; 
 	}
 
 	@Override
