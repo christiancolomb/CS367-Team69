@@ -336,17 +336,7 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 * @return
 	 */
 	private int getSizeHelper(IntervalNode<T> node, int currSize) {
-		if (node == null)
-			return currSize;
-		if (node.getLeftNode() == null && node.getRightNode() == null)
-			return currSize++;
-		if (node.getLeftNode() == null)
-			return currSize = getSizeHelper(node.getRightNode(), ++currSize);
-		if (node.getRightNode() == null)
-			return currSize = getSizeHelper(node.getLeftNode(), ++currSize);
-		else
-			return currSize = getSizeHelper(node.getRightNode(), ++currSize)
-					+ getSizeHelper(node.getLeftNode(), ++currSize);
+		// TODO
 	}
 
 	@Override
