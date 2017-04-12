@@ -74,7 +74,10 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 *             existing interval in this tree.
 	 */
 	public void insert(IntervalADT<T> interval) throws IllegalArgumentException {
-		// TODO
+		if (root == null)
+			root = new IntervalNode<T>(interval);
+		else
+			root = insertHelper(root, interval);
 	}
 
 	/**
@@ -86,7 +89,16 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 */
 	private IntervalNode<T> insertHelper(IntervalNode<T> node, IntervalADT<T> interval)
 			throws IllegalArgumentException {
-		// TODO 
+		if (contains(interval) || interval == null)
+			throw new IllegalArgumentException();
+		if (node == null)
+			return new IntervalNode<T>(interval);
+		if (interval.compareTo(node.getInterval()) < 0)
+			node.setLeftNode(insertHelper(node.getLeftNode(), interval));
+		else
+			node.setRightNode(insertHelper(node.getRightNode(), interval));
+		recalculateMaxEnd(node);
+		return node;
 	}
 
 	@Override
