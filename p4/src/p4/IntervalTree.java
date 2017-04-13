@@ -313,22 +313,27 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 *            input point to search for.
 	 * @return List of intervals containing the point.
 	 */
-	public ArrayList<IntervalADT<T>> searchPoint(T point) {
-		ArrayList<IntervalADT<T>> myList = new ArrayList<IntervalADT<T>>();
-		return searchPointHelper(root, point, myList);
+	public List<IntervalADT<T>> searchPoint(T point) {
+		if (point == null) throw new IllegalArgumentException();
+		List<IntervalADT<T>> result = new ArrayList<IntervalADT<T>> ();
+		searchPointHelper(root, point, result);
+		return result;
+		
 	}
 
-	private ArrayList<IntervalADT<T>> searchPointHelper(IntervalNode<T> node, T point,
-			ArrayList<IntervalADT<T>> myList) {
-		if (point == null)
-			throw new IllegalArgumentException();
-		if (node.getInterval().getStart().compareTo(point) < 0 && node.getInterval().getEnd().compareTo(point) > 0)
-			myList.add(node.getInterval());
-		if (node.getLeftNode() != null)
-			searchPointHelper(node.getLeftNode(), point, myList);
-		if (node.getRightNode() != null)
-			searchPointHelper(node.getRightNode(), point, myList);
-		return myList;
+	/**
+	 * This method is the helper method for seachPoint
+	 * @param node to search for 
+	 * @param point to find the interval which contains this point 
+	 * @param result is a list contains all intervals that contains the points
+	 */
+	private void searchPointHelper(IntervalNode<T> node, T point, 
+			List<IntervalADT<T>> result){
+		if (node == null) return;
+		if (node.getInterval().contains(point))
+			result.add(node.getInterval());
+		searchPointHelper(node.getLeftNode(), point, result);
+		searchPointHelper(node.getRightNode(), point, result);
 	}
 
 	/**
