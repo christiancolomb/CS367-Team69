@@ -331,29 +331,24 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 		return myList;
 	}
 
-	@Override
 	/**
-	 * Get the size of the interval tree. The size is the total number of nodes
-	 * present in the tree.
-	 * 
-	 * <p>
-	 * Tip: Define and call a recursive helper function to calculate this.
-	 * </p>
-	 * 
-	 * @return int number of nodes in the tree.
+	 * Get the size of the interval tree. The size is the total number of
+	 * nodes present in the tree.
 	 */
+	@Override
 	public int getSize() {
-		return getSizeHelper(root, 0);
+		return getSizeHelper(root);
 	}
 
 	/**
-	 * 
-	 * @param node
-	 * @param currSize
-	 * @return
+	 * This is the helper method to get the size 
+	 * @param node is the node to search 
+	 * @return the size of the tree
 	 */
-	private int getSizeHelper(IntervalNode<T> node, int currSize) {
-		// TODO
+	private int getSizeHelper(IntervalNode<T> node){
+		if (node == null) return 0;
+		return 1 + getSizeHelper(node.getLeftNode()) 
+					+ getSizeHelper(node.getRightNode());
 	}
 
 	@Override
