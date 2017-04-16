@@ -1,10 +1,39 @@
 
+///////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017 
+// PROJECT:          p4
+// FILE:             Interval.java
+//						
+// Authors: Albert Liu, Christian Colomb, Alonso Del Rio, Kyra Dahl,
+//			Weidi Dai, Tavishi Gupta
+//
+// Author1: Albert Liu, 		liu668@wisc.edu,	liu668, 	002
+// Author2: Christian Colomb, 		ccolomb@wisc.edu, 	ccolomb, 	002
+// Author3: Alonso Del Rio, 		adelrio@wisc.edu, 	adelrio, 	002
+// Author4: Kyra Dahl, 			krdahl2@wisc.edu, 	krdahl2, 	002
+// Author5: Weidi Dai, 			wdai38@wisc.edu, 	wdai38, 	002
+// Author6: Tavishi Gupta, 		tgupta24@wisc.edu, 	tgupta24, 	002
+// 
+///////////////////////////////////////////////////////////////////////////////
+
 public class Interval<T extends Comparable<T>> implements IntervalADT<T> {
 
+	// start, end, and label of the interval
 	private T start;
 	private T end;
 	private String label;
 
+	/**
+	 * Constructor for an interval given the start, end, and label of the
+	 * interval
+	 * 
+	 * @param start
+	 *            of the interval
+	 * @param end
+	 *            of the interval
+	 * @param label
+	 *            of the interval
+	 */
 	public Interval(T start, T end, String label) {
 		this.start = start;
 		this.end = end;
@@ -32,15 +61,6 @@ public class Interval<T extends Comparable<T>> implements IntervalADT<T> {
 	@Override
 	/**
 	 * Return true if this interval overlaps with the other interval.
-	 * 
-	 * <p>
-	 * Note: two intervals [a, b], [c, d] will NOT overlap if either b &lt; c or
-	 * d &lt; a.
-	 * </p>
-	 * 
-	 * <p>
-	 * In all other cases, they will overlap.
-	 * </p>
 	 * 
 	 * @param other
 	 *            target interval to compare for overlap
@@ -72,36 +92,6 @@ public class Interval<T extends Comparable<T>> implements IntervalADT<T> {
 	 * interval comes before the "other" interval. Intervals are compared first
 	 * on their start time. The end time is only considered if the start time is
 	 * the same.
-	 * 
-	 * <p>
-	 * For example, if start times are different:
-	 * </p>
-	 * 
-	 * <pre>
-	 * [0,1] compared to [2,3]: returns -1 because 0 is before 2
-	 * [2,3] compared to [0,1]: return 1 because 2 is after 0
-	 * [0,4] compared to [2,3]: return -1 because 0 is before 2
-	 * [2,3] compared to [0,4]: return 1 because 2 is after 0
-	 * [0,3] compared to [2,4]: return -1 because 0 is before 2
-	 * [2,4] compared to [0,3]: return 1 because 2 is after 0
-	 * </pre>
-	 * 
-	 * <p>
-	 * If start times are the same, compare based on end time:
-	 * </p>
-	 * 
-	 * <pre>
-	 * [0,3] compared to [0,4]: return -1 because start is same and 3 is before 4
-	 * [0,4] compared to [0,3]: return 1 because start is same and 4 is after 3
-	 * </pre>
-	 * 
-	 * <p>
-	 * If start times and end times are same, return 0
-	 * </p>
-	 * 
-	 * <pre>
-	 * [0,4] compared to [0,4]: return 0
-	 * </pre>
 	 *
 	 * @param other
 	 *            the second interval to which compare this interval with
@@ -121,14 +111,7 @@ public class Interval<T extends Comparable<T>> implements IntervalADT<T> {
 	 * Returns a specific string representation of the interval. It must return
 	 * the interval in this form.
 	 * 
-	 * <p>
-	 * For example: If the interval's label is p1 and the start is 24 and the
-	 * end is 45, then the string returned is:
-	 * </p>
-	 * 
-	 * <pre>
-	 * p1 [24, 45]
-	 * </pre>
+	 * @return a string representation of the interval
 	 */
 	public String toString() {
 		return label + " [" + start + ", " + end + "]";
