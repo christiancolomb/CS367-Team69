@@ -203,6 +203,8 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 			throws IntervalNotFoundException, IllegalArgumentException {
 		if (interval == null)
 			throw new IllegalArgumentException();
+		if (node == null)
+			return null;
 		if (node.getInterval().getStart() == interval.getStart()) {
 			if (node.getInterval().getEnd() == interval.getEnd())
 				if (node.getRightNode() != null) {
@@ -211,8 +213,9 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 					node.setMaxEnd(recalculateMaxEnd(node));
 					return node;
 				} else if (node.getLeftNode() != null)
-					return node.getLeftNode();	
-				else return null;
+					return node.getLeftNode();
+				else
+					return null;
 		} else if (interval.compareTo(node.getInterval()) < 0)
 			node.setLeftNode(deleteHelper(node.getLeftNode(), interval));
 		else if (interval.compareTo(node.getInterval()) > 0)
@@ -220,7 +223,8 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 		else
 			throw new IntervalNotFoundException(interval.toString());
 		node.setMaxEnd(recalculateMaxEnd(node));
-		return node; 
+		return node;
+	}
 	}
 
 	@Override
