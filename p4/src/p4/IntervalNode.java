@@ -8,8 +8,8 @@
 //			Weidi Dai, Tavishi Gupta
 //
 // Author1: Albert Liu, 		liu668@wisc.edu,	liu668, 	002
-// Author2: Christian Colomb, 	ccolomb@wisc.edu, 	ccolomb, 	002
-// Author3: Alonso Del Rio, 	adelrio@wisc.edu, 	adelrio, 	002
+// Author2: Christian Colomb, 		ccolomb@wisc.edu, 	ccolomb, 	002
+// Author3: Alonso Del Rio, 		adelrio@wisc.edu, 	adelrio, 	002
 // Author4: Kyra Dahl, 			krdahl2@wisc.edu, 	krdahl2, 	002
 // Author5: Weidi Dai, 			wdai38@wisc.edu, 	wdai38, 	002
 // Author6: Tavishi Gupta, 		tgupta24@wisc.edu, 	tgupta24, 	002
