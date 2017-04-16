@@ -1,3 +1,21 @@
+
+///////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017 
+// PROJECT:          p4
+// FILE:             IntervalNode.java
+//						
+// Authors: Albert Liu, Christian Colomb, Alonso Del Rio, Kyra Dahl,
+//			Weidi Dai, Tavishi Gupta
+//
+// Author1: Albert Liu, 		liu668@wisc.edu,	liu668, 	002
+// Author2: Christian Colomb, 	ccolomb@wisc.edu, 	ccolomb, 	002
+// Author3: Alonso Del Rio, 	adelrio@wisc.edu, 	adelrio, 	002
+// Author4: Kyra Dahl, 			krdahl2@wisc.edu, 	krdahl2, 	002
+// Author5: Weidi Dai, 			wdai38@wisc.edu, 	wdai38, 	002
+// Author6: Tavishi Gupta, 		tgupta24@wisc.edu, 	tgupta24, 	002
+// 
+///////////////////////////////////////////////////////////////////////////////
+
 /**
  * This class defines the IntervalNode for the IntervalTree. This node has three
  * components: 1) interval - the data that we want to store in this node 2)
@@ -44,12 +62,13 @@ public class IntervalNode<T extends Comparable<T>> {
 	 * @return in-order successor node
 	 */
 	public IntervalNode<T> getSuccessor() {
-		if (rightNode == null) return null;
+		if (rightNode == null)
+			return null;
 		IntervalNode<T> child = rightNode;
-		while(child.getLeftNode() != null)
+		while (child.getLeftNode() != null)
 			child = child.getLeftNode();
 		return child;
-	}	
+	}
 
 	/**
 	 * Returns the interval associated with the node.
