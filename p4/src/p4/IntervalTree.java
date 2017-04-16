@@ -319,9 +319,9 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 *            input point to search for.
 	 * @return List of intervals containing the point.
 	 */
-	public List<IntervalADT<T>> searchPoint(T point) {
+	public ArrayList<IntervalADT<T>> searchPoint(T point) {
 		if (point == null) throw new IllegalArgumentException();
-		List<IntervalADT<T>> result = new ArrayList<IntervalADT<T>> ();
+		ArrayList<IntervalADT<T>> result = new ArrayList<IntervalADT<T>> ();
 		searchPointHelper(root, point, result);
 		return result;
 		
@@ -334,7 +334,7 @@ public class IntervalTree<T extends Comparable<T>> implements IntervalTreeADT<T>
 	 * @param result is a list contains all intervals that contains the points
 	 */
 	private void searchPointHelper(IntervalNode<T> node, T point, 
-			List<IntervalADT<T>> result){
+			ArrayList<IntervalADT<T>> result){
 		if (node == null) return;
 		if (node.getInterval().contains(point))
 			result.add(node.getInterval());
